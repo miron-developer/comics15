@@ -1,7 +1,8 @@
 'use strict'
 
 import { RemovePreloader, WriteContent, ContentHeader } from './content.js';
-
+import { Route } from './router.js';
+import { GetDataByID } from './api.js';
 
 const addCSS = (...links) => {
     const haveLinks = Array.from(document.querySelectorAll('link'));
@@ -18,29 +19,13 @@ export const NotFoundPage = async() => {
     RemovePreloader();
 }
 
-export const MainPage = async() => {
-    console.log('main page');
-    addCSS('index');
-    WriteContent(ContentHeader, 'Главная');
-    WriteContent(undefined, `<div class="about-anifor">
-                                <h2 class="about-anifor-h2">Про форум AniFor</h2>
-                                <p> Как и предыдущий <a href="https://miron-forum.herokuapp.com/" target="_blank">форум</a>, сделан на тематику японского творчества, а именно: аниме, манга и тд.</p>
-                                <p> Форум сделан согласно заданию и навыками программистов</p>
-                            </div>
-                            <div class="top-posts">
-                                <h2> Топ 10 постов по релевантности </h2>
-                                <div class="posts"></div>
-                            </div>`);
+export const ComicsPage = async() => {
+    console.log('comics page');
+    addCSS('comics');
 
-    RemovePreloader();
-}
-
-export const PostsPage = async() => {
-    console.log('posts page');
-    let currentTPPage = 1;
-    addCSS('posts');
-    WriteContent(ContentHeader, 'Посты')
-    WriteContent(undefined, `   <div class="posts"></div>
-                                ${CreatePagination()}`);
+    const comicsID = window.location.pathname.split('/')[1]
+    const data = await GetDataByID(comicsID, 'comics');
+    console.log(data);
+    // if (data.err != "ok") return Route('/nf404');
     RemovePreloader();
 }

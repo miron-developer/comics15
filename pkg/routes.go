@@ -9,7 +9,7 @@ func (app *Application) SetRoutes() http.Handler {
 	// api routes
 	apiMux := http.NewServeMux()
 	apiMux.HandleFunc("/", app.HIndex)
-	apiMux.HandleFunc("/news", app.HNews)
+	apiMux.HandleFunc("/comics/", app.HComics)
 	appMux.Handle("/api/", http.StripPrefix("/api", apiMux))
 
 	// assets define

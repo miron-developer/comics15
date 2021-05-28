@@ -8,12 +8,22 @@ import (
 // SecureHeaderMiddleware set secure header option
 func (app *Application) SecureHeaderMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("cross-origin-resource-policy", "cross-origin")
+		// w.Header().Set("cross-origin-resource-policy", "cross-origin")
+		// w.Header().Set("X-XSS-Protection", "1;mode=block")
+		// w.Header().Set("X-Frame-Options", "deny")
+
+		// accessOrigin := "https://localhost:4330"
+		// if app.IsHeroku {
+		// 	accessOrigin = "https://comics15.herokuapp.com"
+		// }
+		// w.Header().Set("Access-Control-Allow-Origin", accessOrigin)
+		// w.Header().Set("Access-Control-Allow-Methods", "GET")
+		// w.Header().Set("Access-Control-Allow-Credentials", "true")
+
 		w.Header().Set("X-XSS-Protection", "1;mode=block")
 		w.Header().Set("X-Frame-Options", "deny")
 		w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "POST, GET")
-		w.Header().Set("Access-Control-Allow-Credentials", "true")
 		next.ServeHTTP(w, r)
 	})
 }
@@ -59,7 +69,7 @@ func (app *Application) HApi(w http.ResponseWriter, r *http.Request, f func(w ht
 	}
 }
 
-// HNews for handle '/api/news'
-func (app *Application) HNews(w http.ResponseWriter, r *http.Request) {
-	// app.HApi(w, r, app.News)
+// HComics for handle '/api/comics/'
+func (app *Application) HComics(w http.ResponseWriter, r *http.Request) {
+	app.HApi(w, r, app.GetComics)
 }
