@@ -1,0 +1,53 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    overflow-x: hidden;
+}
+
+main {
+    min-height: 100vh;
+    padding: 1rem;
+    display: flex;
+    background: url(https://cs9.pikabu.ru/post_img/big/2020/03/14/12/1584217192121867798.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+/* 404 */
+
+h2.NF-h2,
+h2.ws-message {
+    font-size: 2rem;
+    text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+    * {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    * {
+        font-size: 11px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    * {
+        font-size: 10px;
+    }
+}
