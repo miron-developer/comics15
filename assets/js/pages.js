@@ -1,7 +1,7 @@
 'use strict'
 
 
-import { RemovePreloader, WriteContent, ContentHeader, FillComicsData } from './content.js';
+import { WriteContent, FillComicsData } from './content.js';
 import { Route } from './router.js';
 import { GetDataByID } from './api.js';
 
@@ -14,37 +14,46 @@ const addCSS = (...links) => {
 }
 
 export const NotFoundPage = async() => {
-    WriteContent('404', ContentHeader);
-    WriteContent('<h2 class="NF-h2"> Omaeva mou shindeiru </h2>');
-    RemovePreloader();
+    WriteContent(
+        `<h1 class="NF-h1">404</h1>    
+        <h2 class="NF-h2"> Omaeva mou shindeiru</h2>`
+    );
 }
 
 export const ComicsPage = async() => {
     addCSS('comics');
 
-    const comicsID = window.location.pathname.split('/')[1]
+    const comicsID = parseInt(window.location.pathname.split('/')[1]);
     const data = await GetDataByID(comicsID, 'comics');
     if (data.err && data.err !== "ok") return Route('/nf');
 
     const comicsData = JSON.parse(data);
     if (Object.values(comicsData).length === 0) return Route('/nf');
 
-    WriteContent(comicsData.safe_title, ContentHeader);
     WriteContent(
         `<div class="comics">
+            <h2 class="comics-title"></h2>
             <div class="comics-wrapper">
-                <div class="comics-prev"></div>
-                <div class="comics-next"></div>
                 <div class="comics-img">
+                    <div class="comics-btn comics-prev">&lt;</div>
+                    <div class="comics-btn comics-next">&gt;</div>
                     <img src="" alt="" />
                 </div>
             </div>
             <div class="comics-info">
-                <div class="comics-date"></div>
-                <div class="comics-transcript"></div>
+                <div class="comics-info-item comics-date">
+                    <h3 class="comics-date-title">Date:</h3>
+                    <span></span>
+                </div>
+                <div class="comics-info-item comics-transcript">
+                    <h3 class="comics-transcript-title">Transcipt:</h3>
+                    <span></span>
+                </div>
             </div>
         </div>`
     );
+
+    if (comicsID > 1) document.querySelector('.comics-btn.comics-prev').addEventListener('click', () => Route(`/${comicsID-1}`))
+    document.querySelector('.comics-btn.comics-next').addEventListener('click', () => Route(`/${comicsID+1}`))
     FillComicsData(comicsData);
-    RemovePreloader();
 }

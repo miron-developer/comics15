@@ -3,11 +3,10 @@
 import { Route } from "./router.js";
 
 
-export const ContentHeader = document.querySelector('.content-header');
-export const ContentBody = document.querySelector('.content-body');
+export const ContentElem = document.querySelector('.content');
 
 export const CleanContent = whatClear => whatClear.innerHTML = '';
-export const WriteContent = (insertHtml = '', where = ContentBody) => {
+export const WriteContent = (insertHtml = '', where = ContentElem) => {
     CleanContent(where);
     where.insertAdjacentHTML('beforeend', insertHtml);
 }
@@ -55,8 +54,10 @@ export const GetDate = (y, m, d) => {
 
 export const FillComicsData = (comicsData) => {
     if (!comicsData) return Route('/nf');
+    document.querySelector('.comics-title').textContent = comicsData.safe_title;
+    document.title = "Comics 15:" + comicsData.safe_title;
     document.querySelector('.comics-img img').setAttribute('src', comicsData.img);
     document.querySelector('.comics-img img').setAttribute('alt', comicsData.alt);
-    document.querySelector('.comics-date').textContent = GetDate(comicsData.year, comicsData.month, comicsData.day);
-    document.querySelector('.comics-transcript').textContent = comicsData.transcript;
+    document.querySelector('.comics-date span').textContent = GetDate(comicsData.year, comicsData.month, comicsData.day);
+    document.querySelector('.comics-transcript span').textContent = comicsData.transcript;
 }

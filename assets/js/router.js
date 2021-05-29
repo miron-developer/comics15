@@ -1,7 +1,7 @@
 'use strict'
 
 
-import { GeneratePreloader } from './content.js';
+import { GeneratePreloader, ContentElem } from './content.js';
 import { ComicsPage, NotFoundPage } from './pages.js';
 
 let prevPage = '';
@@ -20,7 +20,7 @@ window.onpopstate = e => Route(e.state);
 const render = (URL) => {
     prevPage = URL;
     history.pushState(URL, '', URL);
-    GeneratePreloader(document.querySelector('.content'));
+    GeneratePreloader(ContentElem);
 }
 
 // routes
