@@ -1,6 +1,7 @@
 'use strict'
 
-import { RemovePreloader, WriteContent, ContentHeader } from './content.js';
+
+import { RemovePreloader, WriteContent, ContentHeader, FillComicsData } from './content.js';
 import { Route } from './router.js';
 import { GetDataByID } from './api.js';
 
@@ -13,19 +14,37 @@ const addCSS = (...links) => {
 }
 
 export const NotFoundPage = async() => {
-    console.log('not found page');
-    WriteContent(ContentHeader, '404');
-    WriteContent(undefined, '<h2 class="NF-h2"> Omaeva mou shindeiru </h2>');
+    WriteContent('404', ContentHeader);
+    WriteContent('<h2 class="NF-h2"> Omaeva mou shindeiru </h2>');
     RemovePreloader();
 }
 
 export const ComicsPage = async() => {
-    console.log('comics page');
     addCSS('comics');
 
     const comicsID = window.location.pathname.split('/')[1]
     const data = await GetDataByID(comicsID, 'comics');
-    console.log(data);
-    // if (data.err != "ok") return Route('/nf404');
+    if (data.err && data.err !== "ok") return Route('/nf');
+
+    const comicsData = JSON.parse(data);
+    if (Object.values(comicsData).length === 0) return Route('/nf');
+
+    WriteContent(comicsData.safe_title, ContentHeader);
+    WriteContent(
+        `<div class="comics">
+            <div class="comics-wrapper">
+                <div class="comics-prev"></div>
+                <div class="comics-next"></div>
+                <div class="comics-img">
+                    <img src="" alt="" />
+                </div>
+            </div>
+            <div class="comics-info">
+                <div class="comics-date"></div>
+                <div class="comics-transcript"></div>
+            </div>
+        </div>`
+    );
+    FillComicsData(comicsData);
     RemovePreloader();
 }

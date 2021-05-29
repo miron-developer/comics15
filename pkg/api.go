@@ -3,7 +3,6 @@ package pkg
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -26,7 +25,6 @@ func doJS(w http.ResponseWriter, data interface{}) {
 }
 
 func (app *Application) GetComics(w http.ResponseWriter, r *http.Request) (interface{}, error) {
-	fmt.Println("get api")
 	if _, e := strconv.Atoi(r.FormValue("id")); e != nil {
 		return nil, errors.New("wrong comics id")
 	}
@@ -40,5 +38,5 @@ func (app *Application) GetComics(w http.ResponseWriter, r *http.Request) (inter
 	if e != nil {
 		return nil, errors.New("wrong comics id")
 	}
-	return body, nil
+	return string(body), nil
 }

@@ -18,11 +18,10 @@ main {
     min-height: 100vh;
     padding: 1rem;
     display: flex;
-    background: url(https://cs9.pikabu.ru/post_img/big/2020/03/14/12/1584217192121867798.jpg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
+}
+
+.content {
+    width: 100%;
 }
 
 

@@ -8,8 +8,7 @@ const formDataToString = (data = new FormData()) => {
     return res.slice(0, -1)
 }
 
-// use fetching by both method
-export const Fetching = async(action, data, method = "POST") => {
+const fetching = async(action, data, method = "POST") => {
     if (action === undefined) return { err: "action undefined" };
 
     const fetchOption = { 'method': method };
@@ -31,8 +30,7 @@ export const PrepareDataToFetch = (datas = {}) => {
 // get data by id & type
 export const GetDataByID = async(id, datatype) => {
     const data = PrepareDataToFetch({ 'id': id });
-    const res = await Fetching("/api/" + datatype, data, 'GET');
+    const res = await fetching("/api/" + datatype, data, 'GET');
     if (res.err !== 'ok') return { 'err': res.err }
-
     return res.data;
 }
