@@ -1,0 +1,20 @@
+[34m[INFO][0m	2021/05/31 01:50:08 init.go:30: loggers is done!
+[34m[INFO][0m	2021/05/31 01:50:08 main.go:21: initialization completed!
+[34m[INFO][0m	2021/05/31 01:50:08 main.go:40: server listening on port: 4330
+[31m[ERROR][0m	2021/05/31 01:50:20 server.go:3054: http: TLS handshake error from [::1]:47220: remote error: tls: unknown certificate
+[34m[INFO][0m	2021/05/31 01:50:20 handlers.go:30: [::1]:47222 GET: '/api/comics?id=1'
+[34m[INFO][0m	2021/05/31 01:50:23 handlers.go:30: [::1]:47222 GET: '/api/comics?id=2'
+[34m[INFO][0m	2021/05/31 01:50:27 handlers.go:30: [::1]:47222 GET: '/api/comics?id=3'
+[34m[INFO][0m	2021/05/31 01:50:29 handlers.go:30: [::1]:47222 GET: '/api/comics?id=4'
+[34m[INFO][0m	2021/05/31 01:50:29 handlers.go:30: [::1]:47222 GET: '/api/comics?id=5'
+[34m[INFO][0m	2021/05/31 01:50:30 handlers.go:30: [::1]:47222 GET: '/api/comics?id=6'
+[34m[INFO][0m	2021/05/31 01:50:32 handlers.go:30: [::1]:47222 GET: '/api/comics?id=7'
+[34m[INFO][0m	2021/05/31 01:50:33 handlers.go:30: [::1]:47222 GET: '/api/comics?id=8'
+[34m[INFO][0m	2021/05/31 01:50:36 handlers.go:30: [::1]:47222 GET: '/api/comics?id=9'
+[34m[INFO][0m	2021/05/31 01:50:39 handlers.go:30: [::1]:47222 GET: '/api/comics?id=10'
+[34m[INFO][0m	2021/05/31 01:51:46 handlers.go:30: [::1]:47222 GET: '/api/comics?id=10'
+[34m[INFO][0m	2021/05/31 01:52:59 handlers.go:30: [::1]:47222 GET: '/api/comics?id=1'
+[34m[INFO][0m	2021/05/31 01:53:01 handlers.go:30: [::1]:47222 GET: '/api/comics?id=10'
+[34m[INFO][0m	2021/05/31 01:53:07 handlers.go:30: [::1]:47222 GET: '/api/comics?id=11'
+[34m[INFO][0m	2021/05/31 01:53:12 handlers.go:30: [::1]:47222 GET: '/api/comics?id=12'
+[34m[INFO][0m	2021/05/31 01:53:15 handlers.go:30: [::1]:47222 GET: '/api/comics?id=13'

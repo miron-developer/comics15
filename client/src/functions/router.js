@@ -1,8 +1,7 @@
-'use strict'
-
-
-import { GeneratePreloader, ContentElem } from './content.js';
-import { ComicsPage, NotFoundPage } from './pages.js';
+import { ContentElem } from './content.js';
+import { GeneratePreloader } from '../components/preloader/preloader';
+import NFPage from '../components/nf/nf';
+import ComicsPage from '../components/comics/comics';
 
 let prevPage = '';
 const routes = new Map();
@@ -11,7 +10,7 @@ export const AddRoutes = (paths = []) => paths.forEach(({ path, fn }) => routes.
 
 export const InitRoutes = () => AddRoutes([
     { 'path': /^\/\d+$/, 'fn': ComicsPage },
-    { 'path': '/nf', 'fn': NotFoundPage }
+    { 'path': '/nf', 'fn': NFPage }
 ]);
 
 // handle back and forward btn

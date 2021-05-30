@@ -65,4 +65,5 @@ h2.comics-title {
 
 .comics-transcript span {
     white-space: pre-wrap;
+    word-break: break-all;
 }

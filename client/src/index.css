@@ -25,16 +25,6 @@ main {
     width: 100%;
 }
 
-
-/* 404 */
-
-h1.NF-h1,
-h2.NF-h2 {
-    font-size: 2rem;
-    text-align: center;
-    color: red;
-}
-
 @media screen and (max-width: 900px) {
     * {
         font-size: 12px;

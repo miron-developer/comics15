@@ -22,7 +22,7 @@ func (app *Application) eHandler(w http.ResponseWriter, e error, msg string, cod
 }
 
 func (app *Application) parseHTMLFiles(w http.ResponseWriter, file string, data interface{}) error {
-	t, e := template.ParseFiles("assets/" + file)
+	t, e := template.ParseFiles("dist/" + file)
 	if e != nil {
 		return e
 	}
